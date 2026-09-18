@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <model name="qr_code4">
+    <static>true</static>
+    <link name="link">
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://qr_code4/meshes/qr_code.dae</uri>
+            <scale>2.5 2.5 1</scale>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+</sdf>
+

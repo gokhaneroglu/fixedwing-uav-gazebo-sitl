@@ -1,0 +1,648 @@
+<?xml version="1.0" ?>
+<sdf version="1.7">
+  <world name="runway">
+    <physics name="1ms" type="ignore">
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+    </physics>
+
+    <plugin filename="gz-sim-physics-system"
+      name="gz::sim::systems::Physics">
+    </plugin>
+    <plugin filename="gz-sim-user-commands-system"
+      name="gz::sim::systems::UserCommands">
+    </plugin>
+    <plugin filename="gz-sim-scene-broadcaster-system"
+      name="gz::sim::systems::SceneBroadcaster">
+    </plugin>
+    <plugin filename="gz-sim-imu-system"
+      name="gz::sim::systems::Imu">
+    </plugin>
+    <plugin filename="gz-sim-navsat-system"
+      name="gz::sim::systems::NavSat">
+    </plugin>
+    
+    
+ <plugin
+      filename="gz-sim-sensors-system"
+      name="gz::sim::systems::Sensors">
+      <render_engine>ogre2</render_engine>
+    </plugin>
+
+<gui fullscreen="0">
+
+ <plugin filename="MinimalScene" name="3D View">
+        <gz-gui>
+          <title>3D View</title>
+          <property type="bool" key="showTitleBar">false</property>
+          <property type="string" key="state">docked</property>
+        </gz-gui>
+
+        <engine>ogre2</engine>
+        <scene>scene</scene>
+        <ambient_light>0.4 0.4 0.4</ambient_light>
+        <background_color>0.8 0.8 0.8</background_color>
+        <camera_pose>-6 0 6 0 0.5 0</camera_pose>
+      </plugin>
+
+        <plugin filename="EntityContextMenuPlugin" name="Entity context menu">
+        <gz-gui>
+          <property key="state" type="string">floating</property>
+          <property key="width" type="double">5</property>
+          <property key="height" type="double">5</property>
+          <property key="showTitleBar" type="bool">false</property>
+        </gz-gui>
+      </plugin>
+      <plugin filename="GzSceneManager" name="Scene Manager">
+        <gz-gui>
+          <property key="resizable" type="bool">false</property>
+          <property key="width" type="double">5</property>
+          <property key="height" type="double">5</property>
+          <property key="state" type="string">floating</property>
+          <property key="showTitleBar" type="bool">false</property>
+        </gz-gui>
+      </plugin>
+      <plugin filename="InteractiveViewControl" name="Interactive view control">
+        <gz-gui>
+          <property key="resizable" type="bool">false</property>
+          <property key="width" type="double">5</property>
+          <property key="height" type="double">5</property>
+          <property key="state" type="string">floating</property>
+          <property key="showTitleBar" type="bool">false</property>
+        </gz-gui>
+      </plugin>
+      <plugin filename="CameraTracking" name="Camera Tracking">
+        <gz-gui>
+          <property key="resizable" type="bool">false</property>
+          <property key="width" type="double">5</property>
+          <property key="height" type="double">5</property>
+          <property key="state" type="string">floating</property>
+          <property key="showTitleBar" type="bool">false</property>
+        </gz-gui>
+      </plugin>
+      
+       <plugin filename="WorldControl" name="World control">
+        <gz-gui>
+          <title>World control</title>
+          <property type="bool" key="showTitleBar">false</property>
+          <property type="bool" key="resizable">false</property>
+          <property type="double" key="height">72</property>
+          <property type="double" key="z">1</property>
+
+
+          <property type="string" key="state">floating</property>
+          <anchors target="3D View">
+            <line own="left" target="left"/>
+            <line own="bottom" target="bottom"/>
+          </anchors>
+        </gz-gui>
+
+        <play_pause>true</play_pause>
+        <step>true</step>
+        <start_paused>true</start_paused>
+        <use_event>true</use_event>
+
+      </plugin>
+      
+       <plugin filename="WorldStats" name="World stats">
+        <gz-gui>
+          <title>World stats</title>
+          <property type="bool" key="showTitleBar">false</property>
+          <property type="bool" key="resizable">false</property>
+          <property type="double" key="height">110</property>
+          <property type="double" key="width">290</property>
+          <property type="double" key="z">1</property>
+
+          <property type="string" key="state">floating</property>
+          <anchors target="3D View">
+            <line own="right" target="right"/>
+            <line own="bottom" target="bottom"/>
+          </anchors>
+        </gz-gui>
+
+        <sim_time>true</sim_time>
+        <real_time>true</real_time>
+        <real_time_factor>true</real_time_factor>
+        <iterations>true</iterations>
+      </plugin>
+      
+      <plugin filename="ImageDisplay" name="Image Display">
+        <gz-gui>
+          <property key="state" type="string">docked</property>
+        </gz-gui>
+        <topic>camera/image</topic>
+      </plugin>
+      
+       <plugin filename="ComponentInspector" name="Component inspector">
+        <gz-gui>
+          <property type="string" key="state">docked</property>
+        </gz-gui>
+      </plugin>
+      
+    <plugin filename="EntityTree" name="Entity tree">
+        <gz-gui>
+          <property type="string" key="state">docked</property>
+        </gz-gui>
+      </plugin>
+    </gui>
+
+
+
+
+
+    <scene>
+      <ambient>1.0 1.0 1.0</ambient>
+      <background>0.8 0.8 0.8</background>
+      <sky></sky>
+    </scene>
+
+    <spherical_coordinates>
+  <latitude_deg>37.98129904</latitude_deg>
+  <longitude_deg>41.83968937</longitude_deg>
+  <elevation>0</elevation>
+  <heading_deg>0</heading_deg>
+  <surface_model>EARTH_WGS84</surface_model>
+</spherical_coordinates>
+
+    <light type="directional" name="sun">
+      <cast_shadows>true</cast_shadows>
+      <pose>0 0 10 0 0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.8 0.8 0.8 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+    </light>
+
+    <!-- ENU axes -->
+    <model name="axes">
+      <static>1</static>
+      <link name="link">
+        <visual name="r">
+          <cast_shadows>0</cast_shadows>
+          <pose>5 0 0.1 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>10 0.01 0.01</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>1 0 0 1</emissive>
+            <specular>0.5 0.5 0.5 1</specular>
+          </material>
+        </visual>
+        <visual name="g">
+          <cast_shadows>0</cast_shadows>
+          <pose>0 5 0.1 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.01 10 0.01</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
+            <emissive>0 1 0 1</emissive>
+            <specular>0.5 0.5 0.5 1</specular>
+          </material>
+        </visual>
+        <visual name="b">
+          <cast_shadows>0</cast_shadows>
+          <pose>0 0 5.1 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.01 0.01 10</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0 0 1 1</ambient>
+            <diffuse>0 0 1 1</diffuse>
+            <emissive>0 0 1 1</emissive>
+            <specular>0.5 0.5 0.5 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    
+    
+    <include>
+      <uri>model://qr_code</uri>
+      <pose>100 507 0.01 0 0 0</pose>
+    </include>
+    
+  
+    <include>
+      <uri>model://qr_code2</uri>
+      <pose>50 10 0.05 0 0 90</pose>
+    </include>
+    
+    
+    <include>
+      <uri>model://qr_code3</uri>
+      <pose>80 535 0.01 0 0 0</pose>
+    </include>
+    
+    <include>
+      <uri>model://qr_code4</uri>
+      <pose>-25 30 0.01 0 0 0</pose>
+    </include>
+    
+    
+    <include>
+      <uri>model://qr_code5</uri>
+      <pose>-17 535 0.01 0 0 0</pose>
+    </include>
+
+
+    <include>
+      <uri>model://runway</uri>
+    </include>
+    
+
+
+
+
+<!-- ====================================================== -->
+<!-- HSS YASAKLI ALANLARI (9 ADET SİLİNDİRİK ENGEL)         -->
+<!-- Referans Orijin (X=0, Y=0): 36.57917500, 36.15137600  -->
+<!-- ====================================================== -->
+
+<!-- HSS 1 -->
+<!-- Merkez: 36.57917500, 36.15137600 | Yarıçap: 20m -->
+<model name="noflyzone_1">
+  <static>true</static>
+  <link name="link">
+    <visual name="visual">
+      <cast_shadows>false</cast_shadows>
+      <geometry>
+        <cylinder>
+          <radius>20.0</radius>
+          <length>200.0</length>
+        </cylinder>
+      </geometry>
+      <material>
+        <ambient>0.35 0 0 0.85</ambient>
+        <diffuse>0.55 0 0 0.85</diffuse>
+        <specular>0.05 0 0 0.85</specular>
+      </material>
+    </visual>
+  </link>
+  <pose>0.000 0.000 100 0 0 0</pose>
+</model>
+
+<!-- HSS 2 -->
+<!-- Merkez: 36.57773609, 36.15283188 | Yarıçap: 20m -->
+<model name="noflyzone_2">
+  <static>true</static>
+  <link name="link">
+    <visual name="visual">
+      <cast_shadows>false</cast_shadows>
+      <geometry>
+        <cylinder>
+          <radius>20.0</radius>
+          <length>200.0</length>
+        </cylinder>
+      </geometry>
+      <material>
+        <ambient>0.35 0 0 0.85</ambient>
+        <diffuse>0.55 0 0 0.85</diffuse>
+        <specular>0.05 0 0 0.85</specular>
+      </material>
+    </visual>
+  </link>
+  <pose>130.334 -159.988 100 0 0 0</pose>
+</model>
+
+<!-- HSS 3 -->
+<!-- Merkez: 36.57863541, 36.14947216 | Yarıçap: 20m -->
+<model name="noflyzone_3">
+  <static>true</static>
+  <link name="link">
+    <visual name="visual">
+      <cast_shadows>false</cast_shadows>
+      <geometry>
+        <cylinder>
+          <radius>20.0</radius>
+          <length>200.0</length>
+        </cylinder>
+      </geometry>
+      <material>
+        <ambient>0.35 0 0 0.85</ambient>
+        <diffuse>0.55 0 0 0.85</diffuse>
+        <specular>0.05 0 0 0.85</specular>
+      </material>
+    </visual>
+  </link>
+  <pose>-170.430 -59.996 100 0 0 0</pose>
+</model>
+
+<!-- HSS 4 -->
+<!-- Merkez: 36.58043405, 36.15036809 | Yarıçap: 20m -->
+<model name="noflyzone_4">
+  <static>true</static>
+  <link name="link">
+    <visual name="visual">
+      <cast_shadows>false</cast_shadows>
+      <geometry>
+        <cylinder>
+          <radius>20.0</radius>
+          <length>200.0</length>
+        </cylinder>
+      </geometry>
+      <material>
+        <ambient>0.35 0 0 0.85</ambient>
+        <diffuse>0.55 0 0 0.85</diffuse>
+        <specular>0.05 0 0 0.85</specular>
+      </material>
+    </visual>
+  </link>
+  <pose>-90.228 139.991 100 0 0 0</pose>
+</model>
+
+<!-- HSS 5 -->
+<!-- Merkez: 36.57782602, 36.15115202 | Yarıçap: 20m -->
+<model name="noflyzone_5">
+  <static>true</static>
+  <link name="link">
+    <visual name="visual">
+      <cast_shadows>false</cast_shadows>
+      <geometry>
+        <cylinder>
+          <radius>20.0</radius>
+          <length>200.0</length>
+        </cylinder>
+      </geometry>
+      <material>
+        <ambient>0.35 0 0 0.85</ambient>
+        <diffuse>0.55 0 0 0.85</diffuse>
+        <specular>0.05 0 0 0.85</specular>
+      </material>
+    </visual>
+  </link>
+  <pose>-20.050 -149.990 100 0 0 0</pose>
+</model>
+
+<!-- HSS 6 -->
+<!-- Merkez: 36.57881527, 36.15350382 | Yarıçap: 20m -->
+<model name="noflyzone_6">
+  <static>true</static>
+  <link name="link">
+    <visual name="visual">
+      <cast_shadows>false</cast_shadows>
+      <geometry>
+        <cylinder>
+          <radius>20.0</radius>
+          <length>200.0</length>
+        </cylinder>
+      </geometry>
+      <material>
+        <ambient>0.35 0 0 0.85</ambient>
+        <diffuse>0.55 0 0 0.85</diffuse>
+        <specular>0.05 0 0 0.85</specular>
+      </material>
+    </visual>
+  </link>
+  <pose>190.478 -39.997 100 0 0 0</pose>
+</model>
+
+<!-- HSS 7 -->
+<!-- Merkez: 36.57971459, 36.15249590 | Yarıçap: 20m -->
+<model name="noflyzone_7">
+  <static>true</static>
+  <link name="link">
+    <visual name="visual">
+      <cast_shadows>false</cast_shadows>
+      <geometry>
+        <cylinder>
+          <radius>20.0</radius>
+          <length>200.0</length>
+        </cylinder>
+      </geometry>
+      <material>
+        <ambient>0.35 0 0 0.85</ambient>
+        <diffuse>0.55 0 0 0.85</diffuse>
+        <specular>0.05 0 0 0.85</specular>
+      </material>
+    </visual>
+  </link>
+  <pose>100.252 60.000 100 0 0 0</pose>
+</model>
+
+<!-- HSS 8 -->
+<!-- Merkez: 36.57944480, 36.15014410 | Yarıçap: 20m -->
+<model name="noflyzone_8">
+  <static>true</static>
+  <link name="link">
+    <visual name="visual">
+      <cast_shadows>false</cast_shadows>
+      <geometry>
+        <cylinder>
+          <radius>20.0</radius>
+          <length>200.0</length>
+        </cylinder>
+      </geometry>
+      <material>
+        <ambient>0.35 0 0 0.85</ambient>
+        <diffuse>0.55 0 0 0.85</diffuse>
+        <specular>0.05 0 0 0.85</specular>
+      </material>
+    </visual>
+  </link>
+  <pose>-110.285 29.998 100 0 0 0</pose>
+</model>
+
+<!-- HSS 9 -->
+<!-- Merkez: 36.57854547, 36.15227192 | Yarıçap: 20m -->
+<model name="noflyzone_9">
+  <static>true</static>
+  <link name="link">
+    <visual name="visual">
+      <cast_shadows>false</cast_shadows>
+      <geometry>
+        <cylinder>
+          <radius>20.0</radius>
+          <length>200.0</length>
+        </cylinder>
+      </geometry>
+      <material>
+        <ambient>0.35 0 0 0.85</ambient>
+        <diffuse>0.55 0 0 0.85</diffuse>
+        <specular>0.05 0 0 0.85</specular>
+      </material>
+    </visual>
+  </link>
+  <pose>80.201 -69.995 100 0 0 0</pose>
+</model>
+    
+ <!-- ====================================================== -->
+<!-- TAM KAPANAN DIŞ ÇİT SINIRLARI (5 KENARLI YARI SAYDAM)   -->
+<!-- Referans Orijin (X=0, Y=0): 36.57917500, 36.15137600  -->
+<!-- ====================================================== -->
+
+<!-- ÇİT KENARI 1 (Köşe 0 -> Köşe 1) -->
+<model name="outer_fence_edge_1">
+  <static>true</static>
+  <link name="link">
+    <visual name="visual">
+      <cast_shadows>false</cast_shadows>
+      <geometry>
+        <box>
+          <!-- Boy: 433m (Köşe birleşimi için bindirme payı dahil) -->
+          <size>433.0 0.5 200.0</size>
+        </box>
+      </geometry>
+      <material>
+        <ambient>0.0 0.5 1.0 0.6</ambient>
+        <diffuse>0.0 0.7 1.0 0.6</diffuse>
+        <specular>0.1 0.1 0.1 0.6</specular>
+      </material>
+    </visual>
+  </link>
+  <pose>81.096 119.184 100 0 0 -0.4285</pose>
+</model>
+
+<!-- ÇİT KENARI 2 (Köşe 1 -> Köşe 2) -->
+<model name="outer_fence_edge_2">
+  <static>true</static>
+  <link name="link">
+    <visual name="visual">
+      <cast_shadows>false</cast_shadows>
+      <geometry>
+        <box>
+          <!-- Boy: 268m -->
+          <size>268.0 0.5 200.0</size>
+        </box>
+      </geometry>
+      <material>
+        <ambient>0.0 0.5 1.0 0.6</ambient>
+        <diffuse>0.0 0.7 1.0 0.6</diffuse>
+        <specular>0.1 0.1 0.1 0.6</specular>
+      </material>
+    </visual>
+  </link>
+  <pose>220.061 -90.707 100 0 0 -2.0169</pose>
+</model>
+
+<!-- ÇİT KENARI 3 (Köşe 2 -> Köşe 3) -->
+<model name="outer_fence_edge_3">
+  <static>true</static>
+  <link name="link">
+    <visual name="visual">
+      <cast_shadows>false</cast_shadows>
+      <geometry>
+        <box>
+          <!-- Boy: 193m -->
+          <size>193.0 0.5 200.0</size>
+        </box>
+      </geometry>
+      <material>
+        <ambient>0.0 0.5 1.0 0.6</ambient>
+        <diffuse>0.0 0.7 1.0 0.6</diffuse>
+        <specular>0.1 0.1 0.1 0.6</specular>
+      </material>
+    </visual>
+  </link>
+  <pose>66.998 -206.219 100 0 0 3.0926</pose>
+</model>
+
+<!-- ÇİT KENARI 4 (Köşe 3 -> Köşe 4) -->
+<model name="outer_fence_edge_4">
+  <static>true</static>
+  <link name="link">
+    <visual name="visual">
+      <cast_shadows>false</cast_shadows>
+      <geometry>
+        <box>
+          <!-- Boy: 238m -->
+          <size>238.0 0.5 200.0</size>
+        </box>
+      </geometry>
+      <material>
+        <ambient>0.0 0.5 1.0 0.6</ambient>
+        <diffuse>0.0 0.7 1.0 0.6</diffuse>
+        <specular>0.1 0.1 0.1 0.6</specular>
+      </material>
+    </visual>
+  </link>
+  <pose>-130.632 -141.720 100 0 0 2.6110</pose>
+</model>
+
+<!-- ÇİT KENARI 5 (Köşe 4 -> Köşe 0) -->
+<model name="outer_fence_edge_5">
+  <static>true</static>
+  <link name="link">
+    <visual name="visual">
+      <cast_shadows>false</cast_shadows>
+      <geometry>
+        <box>
+          <!-- Boy: 315m -->
+          <size>315.0 0.5 200.0</size>
+        </box>
+      </geometry>
+      <material>
+        <ambient>0.0 0.5 1.0 0.6</ambient>
+        <diffuse>0.0 0.7 1.0 0.6</diffuse>
+        <specular>0.1 0.1 0.1 0.6</specular>
+      </material>
+    </visual>
+  </link>
+  <pose>-174.007 63.480 100 0 0 1.1873</pose>
+</model>
+    
+    
+    
+    <!-- 2x2 m QR HEDEF PLAKASI -->
+<model name="qr_target_plate">
+  <static>true</static>
+  <pose>23.21 251.22 0.01 0 0 0</pose>
+
+  <link name="link">
+    <visual name="visual">
+      <geometry>
+        <box>
+          <size>2 2 0.05</size>
+        </box>
+      </geometry>
+
+      <material>
+        <ambient>1 1 1 1</ambient>
+        <diffuse>1 1 1 1</diffuse>
+      </material>
+    </visual>
+  </link>
+</model>
+    
+    
+    <include>
+  <uri>model://qr_code</uri>
+  <name>kamikaze_qr</name>
+  <pose>261.614 -65.847 0.01 0 0 0</pose>
+</include>
+    
+    
+    
+
+     <include>
+      <pose degrees="true">0 10 0.2 0 0 90</pose>
+      <uri>model://mini_talon_vtail</uri>
+    </include>
+    
+  <!--  
+     <include>
+      <pose degrees="true">10 0 0.2 0 0 90</pose>
+      <uri>model://mini_talon_vtail3</uri>
+    </include> -->
+  
+   
+   
+
+  </world>
+</sdf>
