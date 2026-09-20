@@ -47,13 +47,19 @@ Birden fazla sabit kanatlı İHA'nın aynı Gazebo ortamında simüle edilmesi v
 
 ![Dogfight Simulation](images/dogfight_simulation.png)
 
-## Simulation Demo
+### Simulation Demo
 
 A demonstration of the fixed-wing UAV simulation environment and autonomous flight scenario.
 
-[![Oynat](https://img.shields.io/badge/▶_Simülasyon_Videosunu_Oynat_%2F_Durdur-deneme.webm-2ea44f?style=for-the-badge)](deneme.webm)
+<p align="center">
+  <a href="videos/deneme.mp4">
+    <img src="videos/preview.png" alt="Simülasyon Videosunu Oynat" width="100%">
+  </a>
+</p>
 
-> 🎥 **[Simülasyon videosunu oynatmak, durdurmak ve tam ekran izlemek için tıklayın (deneme.webm)](deneme.webm)**
+<p align="center">
+  <b>▶️ <a href="videos/deneme.mp4">Simülasyon videosunu durdurma, sarma ve tam ekran kontrolleriyle oynatmak için tıklayın (deneme.mp4)</a></b>
+</p>
 
 ## Project Structure
 
