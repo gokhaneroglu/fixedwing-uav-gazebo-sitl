@@ -51,7 +51,7 @@ Birden fazla sabit kanatlı İHA'nın aynı Gazebo ortamında simüle edilmesi v
 
 A demonstration of the fixed-wing UAV simulation environment and autonomous flight scenario.
 
-![Simulation Demo](videos/deneme_small.gif)
+<video src="deneme.webm" controls="controls" width="100%"></video>
 
 ## Project Structure
 
