@@ -1,86 +1,58 @@
-# UAV Gazebo SITL Simulation Environment
+# Fixed-Wing UAV Gazebo SITL Simulation Environment
 
-Gazebo Sim ve ArduPilot SITL kullanılarak Savaşan İHA için geliştirilen Mini Talon V-tail sabit kanatlı İHA simülasyon ortamı.
+Gazebo Sim ve ArduPilot SITL kullanılarak geliştirilen, sabit kanatlı İHA sistemlerinin **modelleme, simülasyon ve otonom uçuş testleri** için hazırlanmış bir UAV simulation environment.
 
-## Features
-- Mini Talon V-tail UAV simulation
-- Gazebo Sim + ArduPilot SITL integration
-- ArduPlane fixed-wing simulation
-- Single-UAV and multi-UAV scenarios
-- Custom runway and environment models
-- QR-code mission elements
-- Custom ArduPilot parameter files
+Proje, Savaşan İHA çalışmaları kapsamında Mini Talon V-tail platformu için geliştirilmiştir. Fiziksel uçuş testlerinden önce uçuş kontrolü, görev senaryoları, yol takibi, kalkış-iniş ve çoklu İHA operasyonlarının **Software-in-the-Loop (SITL)** ortamında test edilmesini sağlar.
+
+![Simulation Environment](images/world.png)
+
+## Project Overview
+
+Bu proje; Gazebo üzerinde oluşturulan özel İHA modellerini ve simülasyon dünyalarını ArduPilot ArduPlane ile entegre ederek gerçek uçuş kontrol yazılımına yakın bir test ortamı oluşturur.
+
+Temel amaçlar:
+
+- İHA modelleme ve fiziksel simülasyon
+- ArduPilot ArduPlane ile SITL entegrasyonu
+- Otonom uçuş senaryolarının test edilmesi
+- Yol takibi ve navigasyon algoritmalarının geliştirilmesi
+- Kalkış ve iniş senaryolarının test edilmesi
+- Çoklu İHA simülasyonu
+- Görüntü işleme ve görev senaryolarının simülasyonu
+
+## Simulation Environment
+
+Simülasyon ortamında özel olarak oluşturulmuş:
+
+- Mini Talon V-tail sabit kanatlı İHA modelleri
+- Pist ve çevre modelleri
+- Güneş ve aydınlatma modeli
+- QR kod görev elemanları
+- Tekli ve çoklu İHA senaryoları
+- Özel ArduPilot parametre dosyaları
+
+bulunmaktadır.
+
+## Simulation Scenarios
+
+### Multi-UAV Simulation
+
+Birden fazla sabit kanatlı İHA'nın aynı Gazebo ortamında simüle edilmesi ve görev senaryolarının test edilmesi.
+
+![Multi UAV Simulation](images/dual_uav.png)
+
+### Autonomous Flight Scenario
+
+İHA'ların aynı simülasyon ortamında farklı görev ve uçuş senaryolarında test edilmesi.
+
+![Dogfight Simulation](images/dogfight_simulation.png)
 
 ## Project Structure
+
 ```text
-models/
-worlds/
-params/
-```
-
-## Requirements
-- Gazebo Sim
-- ArduPilot SITL
-- ArduPlane
-- MAVProxy
-
-## Quick Start
-
-### 1. Start Gazebo
-```bash
-gz sim -r -v4 ~/gazebo/worlds/vtail_runway.sdf
-```
-
-### 2. Start ArduPilot SITL
-```bash
-sim_vehicle.py -v ArduPlane \
-  -f JSON:127.0.0.1 \
-  --add-param-file="$HOME/SITL_Models/Gazebo/config/mini_talon_vtail.param" \
-  --console \
-  --map \
-  -l 37.978900,41.840400,0,0
-```
-
-## Simulation Worlds
-- `vtail_runway.sdf` — single-UAV simulation environment
-- `vtail_runway2.sdf` — two-UAV simulation environment
-
-## Models
-- `mini_talon_vtail` — primary Mini Talon V-tail model
-- `mini_talon_vtail2` — second UAV model
-- `runway` — runway environment
-- `sun` — lighting/environment model
-- `qr` and `qr_code*` — QR-code mission elements
-
-## Parameters
-- `mini_talon_vtail.param`
-- `mini_talon_vtail2.param`
-
-## Use Cases
-- Autonomous flight testing
-- Guidance and navigation experiments
-- Path tracking
-- Takeoff and landing testing
-- Multi-UAV simulation
-- Software-in-the-loop testing
-- Computer-vision mission scenarios
-
-## Technologies
-| Technology | Purpose |
-|---|---|
-| Gazebo Sim | Physics and environment simulation |
-| ArduPilot | Flight-control software |
-| ArduPlane | Fixed-wing flight stack |
-| SITL | Software-in-the-loop testing |
-| MAVProxy | Console and map interface |
-| SDF | Gazebo world description |
-| JSON | Gazebo-ArduPilot interface |
-
-## Project Background
-Developed for Savaşan İHA autonomous UAV development and simulation studies.
-
-## Author
-**Gökhan Eroğlu**
-
-## License
-No open-source license has currently been specified.
+fixed-wing-uav-gazebo-sitl/
+├── models/
+├── worlds/
+├── params/
+├── images/
+└── README.md
