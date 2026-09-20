@@ -47,6 +47,14 @@ Birden fazla sabit kanatlı İHA'nın aynı Gazebo ortamında simüle edilmesi v
 
 ![Dogfight Simulation](images/dogfight_simulation.png)
 
+## Simulation Demo
+
+A demonstration of the fixed-wing UAV simulation environment and autonomous flight scenario.
+
+<video src="./videos/deneme.webm" controls width="100%"></video>
+
+[Open simulation video](videos/deneme.webm)
+
 ## Project Structure
 
 ```text
@@ -55,15 +63,5 @@ fixed-wing-uav-gazebo-sitl/
 ├── worlds/
 ├── params/
 ├── images/
+├── videos/
 └── README.md
-
-
-
-## Simulation Demo
-
-A demonstration of the fixed-wing UAV simulation environment and autonomous flight scenario.
-
-[Watch the simulation video](videos/deneme.webm)
-
-
-
