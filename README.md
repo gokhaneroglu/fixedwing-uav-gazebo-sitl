@@ -56,3 +56,14 @@ fixed-wing-uav-gazebo-sitl/
 ├── params/
 ├── images/
 └── README.md
+
+
+
+## Simulation Demo
+
+A demonstration of the fixed-wing UAV simulation environment and autonomous flight scenario.
+
+[Watch the simulation video](videos/deneme.webm)
+
+
+
